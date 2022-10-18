@@ -27,18 +27,17 @@ class _AddCountState extends State<AddCount> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    return Column(
       children: [
+        Text(
+          "$counter",
+          style: const TextStyle(fontSize: 25.0),
+        ),
         ElevatedButton(
             onPressed: () {
               addCounter();
             },
             child: const Text("add")),
-        Text(
-          "$counter",
-          style: const TextStyle(fontSize: 25.0),
-        ),
         ElevatedButton(
             onPressed: () {
               subtractCounter();
