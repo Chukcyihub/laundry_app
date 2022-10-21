@@ -23,11 +23,15 @@ class PlaceOrder extends StatelessWidget {
           const Text(
             "Enter the details of your Lundary Orders and click to Proceed",
           ),
-          const SizedBox(height: 15),
-          const Text(
-              "----------------------------------------------------------------------------------------------------"),
-          const SizedBox(height: 15),
-          const SizedBox(height: 25),
+          const SizedBox(height: 10),
+          const Divider(
+            height: 15,
+            thickness: 3,
+            indent: 5,
+            endIndent: 5,
+            color: Colors.black,
+          ),
+          const SizedBox(height: 20),
           const Padding(
             padding: EdgeInsets.only(left: 30, right: 30),
             child: TextField(
@@ -39,7 +43,7 @@ class PlaceOrder extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 10,
+            height: 15,
           ),
           Padding(
             padding: const EdgeInsets.only(left: 30, right: 30),
@@ -56,7 +60,7 @@ class PlaceOrder extends StatelessWidget {
             padding: const EdgeInsets.only(left: 30, right: 30),
             child: TextFormField(
               decoration: const InputDecoration(
-                prefixIcon: Icon(Icons.currency_bitcoin),
+                prefix: Text("₦"),
                 border: OutlineInputBorder(),
                 labelText: "Price",
               ),
