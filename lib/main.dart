@@ -124,12 +124,14 @@ class CustomStack extends StatelessWidget {
           child: Column(
             children: [
               GestureDetector(
-                onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => PlaceOrder(
-                    image: image,
-                    title: title,
+                onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => PlaceOrder(
+                      image: image,
+                      title: title,
+                    ),
                   ),
-                )),
+                ),
                 child: Container(
                   width: double.infinity,
                   color: Colors.orange,
