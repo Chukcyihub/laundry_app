@@ -171,19 +171,20 @@ class PlaceOrder extends StatelessWidget {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    if (formkey.currentState!.validate()) {}
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => SuccessPage(
-                          clotheType: clotheType.text,
-                          clotheColour: clotheColour.text,
-                          price: price.text,
-                          gender: gender.text,
-                          feedback: feedback.text,
-                          quantity: quantity.text,
+                    if (formkey.currentState!.validate()) {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => SuccessPage(
+                            clotheType: clotheType.text,
+                            clotheColour: clotheColour.text,
+                            price: price.text,
+                            gender: gender.text,
+                            feedback: feedback.text,
+                            quantity: quantity.text,
+                          ),
                         ),
-                      ),
-                    );
+                      );
+                    }
                   },
                   child: const Text("Proceed"),
                 )
