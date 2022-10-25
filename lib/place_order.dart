@@ -12,125 +12,183 @@ class PlaceOrder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController clotheType = TextEditingController();
+    final TextEditingController clotheColour = TextEditingController();
+    final TextEditingController price = TextEditingController();
+    final TextEditingController gender = TextEditingController();
+    final TextEditingController feedback = TextEditingController();
+    final TextEditingController quantity = TextEditingController();
+    final GlobalKey<FormState> formkey = GlobalKey<FormState>();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.orange,
         title: Text(title),
         centerTitle: true,
       ),
-      body: SingleChildScrollView(
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              const SizedBox(height: 15),
-              const Text(
-                "Enter the details of your Lundary Orders and click to Proceed",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 25,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Form(
+            key: formkey,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                const SizedBox(height: 15),
+                const Text(
+                  "Enter the details of your Lundary Orders and click to Proceed",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 25,
+                    color: Colors.green,
+                    fontWeight: FontWeight.w900,
+                  ),
+                ),
+                const SizedBox(height: 10),
+                const Divider(
+                  height: 15,
+                  thickness: 8,
+                  indent: 5,
+                  endIndent: 5,
                   color: Colors.green,
-                  fontWeight: FontWeight.w900,
                 ),
-              ),
-              const SizedBox(height: 10),
-              const Divider(
-                height: 15,
-                thickness: 8,
-                indent: 5,
-                endIndent: 5,
-                color: Colors.green,
-              ),
-              const SizedBox(height: 15),
-              const Padding(
-                padding: EdgeInsets.only(left: 30, right: 30),
-                child: TextField(
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(33.0))),
-                    labelText: "Clothe type",
-                    hintText: "e.g T- shirt",
+                const SizedBox(height: 15),
+                Padding(
+                  padding: const EdgeInsets.only(left: 30, right: 30),
+                  child: TextFormField(
+                    validator: (value) {
+                      if (value == "") {
+                        return "Clothe type is required";
+                      }
+                      return null;
+                    },
+                    controller: clotheType,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(33.0))),
+                      labelText: "Clothe type",
+                      hintText: "e.g T- shirt",
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 30, right: 30),
-                child: TextFormField(
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(33.0))),
-                    labelText: "Clothe Colour",
-                    hintText: "e.g red or green",
+                const SizedBox(
+                  height: 15,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 30, right: 30),
+                  child: TextFormField(
+                    validator: (value) {
+                      if (value == "") {
+                        return "Clothe Colour is required";
+                      }
+                      return null;
+                    },
+                    controller: clotheColour,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(33.0))),
+                      labelText: "Clothe Colour",
+                      hintText: "e.g red or green",
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 10),
-              Padding(
-                padding: const EdgeInsets.only(left: 30, right: 30),
-                child: TextFormField(
-                  decoration: const InputDecoration(
-                    prefix: Text("₦"),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(33.0))),
-                    labelText: "Price",
+                const SizedBox(height: 10),
+                Padding(
+                  padding: const EdgeInsets.only(left: 30, right: 30),
+                  child: TextFormField(
+                    validator: (value) {
+                      if (value == "") {
+                        return " Enter a correct value for price";
+                      }
+                      return null;
+                    },
+                    controller: price,
+                    keyboardType: TextInputType.number,
+                    decoration: const InputDecoration(
+                      prefix: Text("₦"),
+                      border: OutlineInputBorder(
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(33.0))),
+                      labelText: "Price",
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 30, right: 30),
-                child: TextFormField(
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(33.0))),
-                    labelText: "Gender",
-                    hintText: "Male/Female",
+                const SizedBox(
+                  height: 15,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 30, right: 30),
+                  child: TextFormField(
+                    validator: (value) {
+                      if (value == "") {
+                        return "Gender should be male or female";
+                      }
+                      return null;
+                    },
+                    controller: gender,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(33.0))),
+                      labelText: "Gender",
+                      hintText: "Male/Female",
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 30, right: 30),
-                child: TextFormField(
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(33.0))),
-                    labelText: "Feedback",
-                    hintText: "Complaints/Suggestions",
+                const SizedBox(
+                  height: 15,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 30, right: 30),
+                  child: TextFormField(
+                    controller: feedback,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(33.0))),
+                      labelText: "Feedback",
+                      hintText: "Complaints/Suggestions",
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 15),
-              const Padding(
-                padding: EdgeInsets.only(left: 30, right: 30),
-                child: TextField(
-                  decoration: InputDecoration(
-                    labelText: "quantity",
+                const SizedBox(height: 15),
+                Padding(
+                  padding: const EdgeInsets.only(left: 30, right: 30),
+                  child: TextFormField(
+                    validator: (value) {
+                      if (value == "") {
+                        return "quantity feed cannot be empty";
+                      }
+                      return null;
+                    },
+                    controller: quantity,
+                    keyboardType: TextInputType.number,
+                    decoration: const InputDecoration(
+                      labelText: "quantity",
+                    ),
                   ),
                 ),
-              ),
-              GestureDetector(
-                child: ElevatedButton(
+                ElevatedButton(
                   onPressed: () {
+                    if (formkey.currentState!.validate()) {}
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => const SuccessPage(),
+                        builder: (context) => SuccessPage(
+                          clotheType: clotheType.text,
+                          clotheColour: clotheColour.text,
+                          price: price.text,
+                          gender: gender.text,
+                          feedback: feedback.text,
+                          quantity: quantity.text,
+                        ),
                       ),
                     );
                   },
-                  child: const Text("Submit"),
-                ),
-              )
-            ],
+                  child: const Text("Proceed"),
+                )
+              ],
+            ),
           ),
         ),
       ),
