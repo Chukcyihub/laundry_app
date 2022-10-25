@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:ilaundry/success_Page.dart';
 
 class PlaceOrder extends StatelessWidget {
@@ -101,9 +102,11 @@ class PlaceOrder extends StatelessWidget {
                       if (value == "") {
                         return " Enter a correct value for price";
                       }
+
                       return null;
                     },
                     controller: price,
+                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                     keyboardType: TextInputType.number,
                     decoration: const InputDecoration(
                       prefix: Text("₦"),
@@ -160,9 +163,13 @@ class PlaceOrder extends StatelessWidget {
                       if (value == "") {
                         return "quantity feed cannot be empty";
                       }
+                      if (int.parse(value!) < 1) {
+                        return "Quantity value cannot be 0";
+                      }
                       return null;
                     },
                     controller: quantity,
+                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                     keyboardType: TextInputType.number,
                     decoration: const InputDecoration(
                       labelText: "quantity",
@@ -177,10 +184,10 @@ class PlaceOrder extends StatelessWidget {
                           builder: (context) => SuccessPage(
                             clotheType: clotheType.text,
                             clotheColour: clotheColour.text,
-                            price: price.text,
+                            price: int.parse(price.text),
                             gender: gender.text,
                             feedback: feedback.text,
-                            quantity: quantity.text,
+                            quantity: int.parse(quantity.text),
                           ),
                         ),
                       );

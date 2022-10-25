@@ -13,10 +13,10 @@ class SuccessPage extends StatefulWidget {
 
   final String clotheType;
   final String clotheColour;
-  final String price;
+  final int price;
   final String gender;
   final String feedback;
-  final String quantity;
+  final int quantity;
 
   @override
   State<SuccessPage> createState() => _SuccessPageState();
@@ -50,7 +50,7 @@ class _SuccessPageState extends State<SuccessPage> {
             ),
             ListTile(
               leading: const Icon(Icons.feedback),
-              title: Text("feedback: ${widget.feedback}"),
+              title: Text(widget.feedback),
             ),
             ListTile(
               leading: const Icon(Icons.production_quantity_limits),
