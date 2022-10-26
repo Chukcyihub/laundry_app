@@ -194,7 +194,7 @@ class PlaceOrder extends StatelessWidget {
                     }
                   },
                   child: const Text("Proceed"),
-                )
+                ),
               ],
             ),
           ),

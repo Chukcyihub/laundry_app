@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ilaundry/confirmation.dart';
 
 class SuccessPage extends StatefulWidget {
   const SuccessPage(
@@ -55,7 +56,17 @@ class _SuccessPageState extends State<SuccessPage> {
             ListTile(
               leading: const Icon(Icons.production_quantity_limits),
               title: Text("Clothe Quantity is ${widget.quantity}"),
-            )
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const Confirmation(),
+                  ),
+                );
+              },
+              child: const Text("Proceed"),
+            ),
           ],
         ),
       ),
